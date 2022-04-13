@@ -4,3 +4,5 @@ events:
 worldborder:
   base: 10
   onAchievment: 10
+  witherKiller: 100
+  dragonKiller: 100
