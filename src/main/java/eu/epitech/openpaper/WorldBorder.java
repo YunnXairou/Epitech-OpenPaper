@@ -27,10 +27,18 @@ public class WorldBorder {
 
         for (String type : trophies.keySet())
             expantion += trophies.get(type).size()
-                    * OpenPaper.plugin.getConfig().getDouble("worldborder.advancement." + type);
+                    * config.getDouble("worldborder.advancement." + type);
 
-        for (World w : Bukkit.getWorlds())
-            w.getWorldBorder().setSize(expantion);
+        for (World w : Bukkit.getWorlds()) {
+            OpenPaper.plugin.getLogger().info(w.getName());
+
+            if (w.getName().endsWith("_nether") && config.isDouble("worldborder.worldModifier.nether"))
+                w.getWorldBorder().setSize(expantion * config.getDouble("worldborder.worldModifier.nether"));
+            else if (w.getName().endsWith("_the_end") && config.isDouble("worldborder.worldModifier.end"))
+                w.getWorldBorder().setSize(expantion * config.getDouble("worldborder.worldModifier.end"));
+            else
+                w.getWorldBorder().setSize(expantion);
+        }
     }
 
     WorldBorder() {

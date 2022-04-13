@@ -11,3 +11,5 @@ worldborder:
     end: 1000
   witherKiller: 100
   dragonKiller: 100
+  worldModifier:
+    nether: 0.125
