@@ -3,6 +3,11 @@ events:
   harvest-crop: true
 worldborder:
   base: 10
-  onAchievment: 10
+  advancement: 
+    story: 100
+    adventure: 100
+    husbandry: 100
+    nether: 800
+    end: 1000
   witherKiller: 100
   dragonKiller: 100
