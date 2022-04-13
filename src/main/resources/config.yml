@@ -1,3 +1,6 @@
 
 events:
   harvest-crop: true
+worldborder:
+  base: 10
+  onAchievment: 10

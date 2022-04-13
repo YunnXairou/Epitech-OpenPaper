@@ -2,6 +2,7 @@ package eu.epitech.openpaper;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
+import eu.epitech.openpaper.events.AdvancementListener;
 import eu.epitech.openpaper.events.CropHarvest;
 
 /**
@@ -10,16 +11,15 @@ import eu.epitech.openpaper.events.CropHarvest;
  */
 public class OpenPaper extends JavaPlugin {
     public static OpenPaper plugin;
+    public static WorldBorder worldBorder;
 
     @Override
     public void onEnable() {
         plugin = this;
+        worldBorder = new WorldBorder();
 
-        getLogger().info("Hello World!");
         // Copy the config.yml in the plugin configuration folder if it doesn't exists.
         this.saveDefaultConfig();
-        // TODO : Do something if your plugin needs it (registering commands /
-        // listeners)
 
         registerEvents();
     }
@@ -33,12 +33,6 @@ public class OpenPaper extends JavaPlugin {
 
     private void registerEvents() {
         getServer().getPluginManager().registerEvents(new CropHarvest(), this);
-    }
-
-    private void checkPluginDependencies() {
-        if (getServer().getPluginManager().getPlugin("ProtocolLib") == null) {
-            getLogger()
-                    .info("ProtocolLib is not installed. Please install ProtocolLib for Grains to work as intended.");
-        }
+        getServer().getPluginManager().registerEvents(new AdvancementListener(), this);
     }
 }
